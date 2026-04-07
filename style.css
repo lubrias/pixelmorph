@@ -63,6 +63,19 @@
 	}
 }
 
+body.ads-blocked #ad-top,
+body.ads-blocked .ad-sidebar {
+	display: none !important;
+}
+
+body.ads-blocked #converter {
+	grid-template-columns: minmax(0, 1fr) !important;
+}
+
+body.ads-blocked #converter > section {
+	width: 100%;
+}
+
 /* Otimizar espaço em telas muito pequenas */
 @media (max-width: 640px) {
 	#ad-top {

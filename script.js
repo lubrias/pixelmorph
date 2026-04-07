@@ -18,6 +18,15 @@ if (activeTheme === 'dark' || (!activeTheme && prefersDark)) {
 	root.classList.add('dark');
 }
 
+setTimeout(() => {
+	const adFrames = document.querySelectorAll('.ad-slot ins');
+	const hasRenderedAd = Array.from(adFrames).some((slot) => slot.querySelector('iframe, img, script') || slot.children.length > 0);
+
+	if (!hasRenderedAd) {
+		document.body.classList.add('ads-blocked');
+	}
+}, 3500);
+
 themeToggle.addEventListener('click', () => {
 	root.classList.toggle('dark');
 	localStorage.setItem('theme', root.classList.contains('dark') ? 'dark' : 'light');
