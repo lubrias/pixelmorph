@@ -1,0 +1,26 @@
+.drop-zone {
+	transition: border-color 0.25s ease, background-color 0.25s ease, transform 0.25s ease;
+}
+
+.drop-zone.is-active {
+	border-color: rgb(16 185 129 / 0.9);
+	background-color: rgb(209 250 229 / 0.7);
+	transform: translateY(-2px);
+}
+
+.dark .drop-zone.is-active {
+	background-color: rgb(6 95 70 / 0.35);
+}
+
+.ad-slot {
+	display: grid;
+	place-items: center;
+	padding: 0.75rem;
+	text-align: center;
+	font-size: 0.75rem;
+	color: rgb(100 116 139);
+}
+
+.dark .ad-slot {
+	color: rgb(148 163 184);
+}

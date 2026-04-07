@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PixelMorph - Conversor de Imagens Rápido</title>
+    <meta name="description" content="Converta imagens para PNG, JPG e WebP em segundos com o PixelMorph. Ferramenta online rápida, simples e responsiva para otimizar seu fluxo de trabalho.">
+    <meta name="robots" content="index, follow">
+
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="PixelMorph">
+    <meta property="og:title" content="PixelMorph - Conversor de Imagens Rápido">
+    <meta property="og:description" content="Converta imagens para PNG, JPG e WebP em segundos. Interface moderna, rápida e pronta para uso.">
+    <meta property="og:url" content="https://seu-dominio.com/">
+    <meta property="og:image" content="https://seu-dominio.com/og-image.png">
+    <meta property="og:locale" content="pt_BR">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="PixelMorph - Conversor de Imagens Rápido">
+    <meta name="twitter:description" content="Converta imagens para PNG, JPG e WebP em segundos.">
+    <meta name="twitter:image" content="https://seu-dominio.com/og-image.png">
+
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="shortcut icon" href="favicon.svg">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            50: '#edf6ff',
+                            100: '#d9ebff',
+                            500: '#3b82f6',
+                            600: '#2563eb'
+                        }
+                    },
+                    boxShadow: {
+                        soft: '0 10px 35px rgba(59, 130, 246, 0.15)'
+                    }
+                }
+            }
+        };
+    </script>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+<body class="min-h-screen bg-slate-50 text-slate-800 transition-colors duration-300 dark:bg-slate-950 dark:text-slate-100">
+    <div class="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_top,_rgba(59,130,246,0.14),_transparent_45%),radial-gradient(circle_at_bottom_right,_rgba(16,185,129,0.12),_transparent_40%)]"></div>
+
+    <div class="mx-auto max-w-7xl px-4 pb-10 sm:px-6 lg:px-8">
+        <div class="pt-4">
+            <div class="ad-slot h-20 w-full rounded-2xl border border-dashed border-slate-300 bg-white/80 dark:border-slate-700 dark:bg-slate-900/80">
+                Espaço para Google AdSense (Topo 970x90 / responsivo)
+            </div>
+        </div>
+
+        <header class="mt-4 rounded-2xl border border-slate-200 bg-white/85 p-4 shadow-soft backdrop-blur dark:border-slate-800 dark:bg-slate-900/85">
+            <div class="flex items-center justify-between gap-4">
+                <a href="#" class="flex items-center gap-3">
+                    <span class="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-brand-500 to-emerald-500 text-white">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5V8.25A2.25 2.25 0 0 1 5.25 6h13.5A2.25 2.25 0 0 1 21 8.25v8.25M3 16.5l3.857-3.857a2.25 2.25 0 0 1 3.182 0l.536.536a2.25 2.25 0 0 0 3.182 0l2.786-2.786a2.25 2.25 0 0 1 3.182 0L21 12M3 16.5v.75A2.25 2.25 0 0 0 5.25 19.5h13.5A2.25 2.25 0 0 0 21 17.25v-.75" />
+                        </svg>
+                    </span>
+                    <div>
+                        <h1 class="font-semibold tracking-tight">PixelMorph</h1>
+                        <p class="text-xs text-slate-500 dark:text-slate-400">WebP, PNG, JPG em segundos</p>
+                    </div>
+                </a>
+
+                <div class="flex items-center gap-3">
+                    <nav class="hidden gap-4 text-sm sm:flex">
+                        <a href="#converter" class="hover:text-brand-600">Conversor</a>
+                        <a href="#arquivos" class="hover:text-brand-600">Arquivos</a>
+                        <a href="#suporte" class="hover:text-brand-600">Suporte</a>
+                    </nav>
+                    <button id="themeToggle" class="rounded-xl border border-slate-200 bg-white px-3 py-2 text-sm dark:border-slate-700 dark:bg-slate-800" type="button">
+                        Alternar tema
+                    </button>
+                </div>
+            </div>
+        </header>
+
+        <main id="converter" class="mt-6 grid grid-cols-1 gap-4 lg:grid-cols-[220px_minmax(0,1fr)_220px]">
+            <aside class="hidden lg:block">
+                <div class="ad-slot h-[420px] rounded-2xl border border-dashed border-slate-300 bg-white/80 dark:border-slate-700 dark:bg-slate-900/80">
+                    Espaço AdSense (Lateral 160x600)
+                </div>
+            </aside>
+
+            <section class="space-y-4">
+                <div class="rounded-3xl border border-slate-200 bg-white/85 p-5 shadow-soft backdrop-blur dark:border-slate-800 dark:bg-slate-900/85 sm:p-8">
+                    <div id="dropZone" class="drop-zone rounded-2xl border-2 border-dashed border-brand-500/60 bg-brand-50/60 p-8 text-center transition dark:bg-slate-900 sm:p-12">
+                        <div class="mx-auto flex h-14 w-14 items-center justify-center rounded-2xl bg-white text-brand-600 shadow sm:h-16 sm:w-16 dark:bg-slate-800">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M12 16.5V6m0 0-3 3m3-3 3 3M3 16.5v.75A2.25 2.25 0 0 0 5.25 19.5h13.5A2.25 2.25 0 0 0 21 17.25v-.75" />
+                            </svg>
+                        </div>
+                        <h2 class="mt-4 text-lg font-semibold sm:text-xl">Arraste e solte suas imagens aqui</h2>
+                        <p class="mt-2 text-sm text-slate-600 dark:text-slate-300">Aceita WebP, PNG e JPG. Conversão simulada para demonstração da interface.</p>
+
+                        <div class="mt-6 flex flex-col items-center justify-center gap-3 sm:flex-row">
+                            <button id="selectFileBtn" class="rounded-xl bg-brand-600 px-5 py-3 text-sm font-medium text-white transition hover:bg-brand-500" type="button">
+                                Selecionar Arquivo
+                            </button>
+                            <button id="convertBtn" class="rounded-xl bg-emerald-600 px-5 py-3 text-sm font-medium text-white transition hover:bg-emerald-500 disabled:cursor-not-allowed disabled:opacity-60" type="button" disabled>
+                                Converter
+                            </button>
+                            <select id="targetFormat" class="rounded-xl border border-slate-300 bg-white px-4 py-3 text-sm dark:border-slate-700 dark:bg-slate-800" aria-label="Formato de saída">
+                                <option value="png">Converter para PNG</option>
+                                <option value="webp">Converter para WebP</option>
+                                <option value="jpg">Converter para JPG</option>
+                            </select>
+                            <input id="fileInput" class="hidden" type="file" accept="image/png,image/jpeg,image/webp" multiple>
+                        </div>
+                    </div>
+                </div>
+
+                <section id="arquivos" class="rounded-3xl border border-slate-200 bg-white/85 p-5 shadow-soft backdrop-blur dark:border-slate-800 dark:bg-slate-900/85 sm:p-6">
+                    <div class="flex items-center justify-between gap-2">
+                        <h3 class="text-base font-semibold sm:text-lg">Arquivos selecionados</h3>
+                        <span id="fileCount" class="text-xs text-slate-500 dark:text-slate-400">0 arquivos</span>
+                    </div>
+                    <ul id="fileList" class="mt-4 space-y-3">
+                        <li class="rounded-xl border border-slate-200 bg-slate-50 p-4 text-sm text-slate-500 dark:border-slate-700 dark:bg-slate-800/50 dark:text-slate-400">
+                            Nenhum arquivo adicionado ainda.
+                        </li>
+                    </ul>
+                </section>
+
+                <section class="rounded-3xl border border-slate-200 bg-white/85 p-5 shadow-soft backdrop-blur dark:border-slate-800 dark:bg-slate-900/85 sm:p-6">
+                    <h2 class="text-xl font-semibold tracking-tight text-slate-900 dark:text-slate-100 sm:text-2xl">Por que converter imagens para WebP?</h2>
+                    <p class="mt-3 text-sm leading-7 text-slate-600 dark:text-slate-300">
+                        Converter imagens para WebP ajuda a reduzir o tamanho dos arquivos sem perda visual perceptível na maioria dos casos.
+                        Isso melhora a velocidade de carregamento, reduz o consumo de dados em dispositivos móveis e contribui para melhores notas
+                        de Core Web Vitals. Em projetos de e-commerce, blog e landing pages, imagens otimizadas significam mais desempenho,
+                        melhor experiência do usuário e maior potencial de conversão.
+                    </p>
+                    <p class="mt-3 text-sm leading-7 text-slate-600 dark:text-slate-300">
+                        O PixelMorph permite transformar arquivos PNG, JPG e WebP em segundos para que você publique imagens mais leves,
+                        mantendo qualidade e organização no fluxo de trabalho.
+                    </p>
+                </section>
+
+                <section class="rounded-3xl border border-slate-200 bg-white/85 p-5 shadow-soft backdrop-blur dark:border-slate-800 dark:bg-slate-900/85 sm:p-6">
+                    <h2 class="text-xl font-semibold tracking-tight text-slate-900 dark:text-slate-100 sm:text-2xl">Como usar a ferramenta</h2>
+                    <div class="mt-4 grid gap-4 sm:grid-cols-3">
+                        <article class="rounded-2xl border border-slate-200 bg-slate-50 p-4 dark:border-slate-700 dark:bg-slate-800/40">
+                            <h3 class="text-sm font-semibold text-slate-900 dark:text-slate-100">1. Selecione suas imagens</h3>
+                            <p class="mt-2 text-sm text-slate-600 dark:text-slate-300">Arraste para a área de upload ou use o botão Selecionar Arquivo.</p>
+                        </article>
+                        <article class="rounded-2xl border border-slate-200 bg-slate-50 p-4 dark:border-slate-700 dark:bg-slate-800/40">
+                            <h3 class="text-sm font-semibold text-slate-900 dark:text-slate-100">2. Escolha o formato</h3>
+                            <p class="mt-2 text-sm text-slate-600 dark:text-slate-300">Defina o formato de saída no seletor: PNG, WebP ou JPG.</p>
+                        </article>
+                        <article class="rounded-2xl border border-slate-200 bg-slate-50 p-4 dark:border-slate-700 dark:bg-slate-800/40">
+                            <h3 class="text-sm font-semibold text-slate-900 dark:text-slate-100">3. Clique em Converter</h3>
+                            <p class="mt-2 text-sm text-slate-600 dark:text-slate-300">Aguarde o processamento e o download do arquivo convertido.</p>
+                        </article>
+                    </div>
+                </section>
+
+                <section class="rounded-3xl border border-slate-200 bg-white/85 p-5 shadow-soft backdrop-blur dark:border-slate-800 dark:bg-slate-900/85 sm:p-6">
+                    <h2 class="text-xl font-semibold tracking-tight text-slate-900 dark:text-slate-100 sm:text-2xl">FAQ</h2>
+                    <div class="mt-4 space-y-4">
+                        <article>
+                            <h3 class="text-base font-semibold text-slate-900 dark:text-slate-100">Quais formatos o PixelMorph suporta?</h3>
+                            <p class="mt-1 text-sm text-slate-600 dark:text-slate-300">Você pode enviar imagens como PNG, JPG, JPEG, WebP e outros formatos suportados pelo mecanismo de conversão.</p>
+                        </article>
+                        <article>
+                            <h3 class="text-base font-semibold text-slate-900 dark:text-slate-100">Meus dados estão seguros?</h3>
+                            <p class="mt-1 text-sm text-slate-600 dark:text-slate-300">Sim. O processamento é local/efêmero no servidor de execução e os arquivos não são armazenados permanentemente após a conversão.</p>
+                        </article>
+                        <article>
+                            <h3 class="text-base font-semibold text-slate-900 dark:text-slate-100">Preciso criar conta para converter imagens?</h3>
+                            <p class="mt-1 text-sm text-slate-600 dark:text-slate-300">Não. A ferramenta foi projetada para uso rápido, sem cadastro e sem etapas extras.</p>
+                        </article>
+                        <article>
+                            <h3 class="text-base font-semibold text-slate-900 dark:text-slate-100">A conversão afeta a qualidade da imagem?</h3>
+                            <p class="mt-1 text-sm text-slate-600 dark:text-slate-300">Depende do formato escolhido. Em geral, WebP e JPG podem reduzir o tamanho com pequena perda visual, enquanto PNG prioriza fidelidade.</p>
+                        </article>
+                    </div>
+                </section>
+
+                <section id="politica" class="rounded-3xl border border-slate-200 bg-white/85 p-5 shadow-soft backdrop-blur dark:border-slate-800 dark:bg-slate-900/85 sm:p-6">
+                    <h2 class="text-xl font-semibold tracking-tight text-slate-900 dark:text-slate-100 sm:text-2xl">Política de Privacidade</h2>
+                    <p class="mt-3 text-sm leading-7 text-slate-600 dark:text-slate-300">
+                        O PixelMorph respeita a sua privacidade. Arquivos enviados para conversão são processados de forma efêmera e não são armazenados
+                        permanentemente. Coletamos apenas informações técnicas mínimas para funcionamento, segurança e melhoria da experiência.
+                    </p>
+                    <p class="mt-3 text-sm leading-7 text-slate-600 dark:text-slate-300">
+                        Este site pode exibir anúncios do Google AdSense, que pode usar cookies para personalizar anúncios e medir desempenho.
+                        Ao continuar navegando, você concorda com o uso de cookies conforme as políticas do Google e as leis aplicáveis.
+                    </p>
+                    <p class="mt-3 text-sm leading-7 text-slate-600 dark:text-slate-300">
+                        Você pode revisar uma versão completa da política na página dedicada: <a href="privacy.html" class="font-medium text-brand-600 hover:underline">Política de Privacidade completa</a>.
+                    </p>
+                </section>
+            </section>
+
+            <aside class="hidden lg:block">
+                <div class="ad-slot h-[420px] rounded-2xl border border-dashed border-slate-300 bg-white/80 dark:border-slate-700 dark:bg-slate-900/80">
+                    Espaço AdSense (Lateral 300x600)
+                </div>
+            </aside>
+        </main>
+
+        <footer id="suporte" class="mt-6 text-center text-xs text-slate-500 dark:text-slate-400">
+            PixelMorph 2026 • Estrutura SPA para ferramenta web de conversão de imagens
+        </footer>
+    </div>
+</body>
+</html>
