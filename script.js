@@ -1,5 +1,5 @@
 const themeToggle = document.getElementById('themeToggle');
-const API_URL = 'http://127.0.0.1:8000';
+const API_URL = 'https://pixelmorph.onrender.com';
 const root = document.documentElement;
 const dropZone = document.getElementById('dropZone');
 const fileInput = document.getElementById('fileInput');
