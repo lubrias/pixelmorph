@@ -12,15 +12,60 @@
 	background-color: rgb(6 95 70 / 0.35);
 }
 
-.ad-slot {
-	display: grid;
-	place-items: center;
-	padding: 0.75rem;
-	text-align: center;
-	font-size: 0.75rem;
-	color: rgb(100 116 139);
+/* Estilos para slots de anúncio */
+.ad-sidebar {
+	flex-shrink: 0;
+	overflow: hidden;
 }
 
-.dark .ad-slot {
-	color: rgb(148 163 184);
+.ad-slot {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	min-height: 90px;
+	width: 100%;
+	background: transparent;
+	border: none;
+	padding: 0;
+	margin: 0;
+	overflow: hidden;
+	position: relative;
+	transition: all 0.3s ease;
+}
+
+/* Sidebar esquerda - Lateral 160x600 */
+.ad-sidebar-left .ad-slot {
+	width: 160px;
+	min-height: 600px;
+}
+
+/* Sidebar direita - Lateral 300x600 */
+.ad-sidebar-right .ad-slot {
+	width: 300px;
+	min-height: 600px;
+}
+
+/* Slot superior */
+#ad-top .ad-slot {
+	min-height: 90px;
+}
+
+.ad-slot ins {
+	display: block;
+	max-width: 100%;
+	max-height: 100%;
+}
+
+/* Responsividade: Esconder anúncios laterais em dispositivos pequenos */
+@media (max-width: 1024px) {
+	.ad-sidebar {
+		display: none !important;
+	}
+}
+
+/* Otimizar espaço em telas muito pequenas */
+@media (max-width: 640px) {
+	#ad-top {
+		display: none;
+	}
 }
